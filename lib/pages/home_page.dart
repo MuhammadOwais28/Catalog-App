@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
     var days = 30;
     var name = "Flutter";
     return Scaffold(
-      appBar: AppBar(title: Text("Catalog App")),
+      appBar: AppBar(title: const Text("Catalog App")),
       body: Center(
         child: Container(
           child: Text("Welcome to $days days of $name."),
