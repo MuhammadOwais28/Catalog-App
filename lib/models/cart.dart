@@ -1,18 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'catalog.dart';
 
 class CartModel {
   //catalog field
- late CatalogModel _catalog;
+  late CatalogModel _catalog;
 
   //collection of ids - store ids of each item
   final List<int> _itemIds = [];
   // get catalog
   CatalogModel get catalog => _catalog;
-  set Catalog(CatalogModel newcatalog) {
-    // assert(newcatalog != null);
+
+  // just changed the Catalog(spelling) to Catalog // Akhlaq Shaikh
+  set catalog(CatalogModel newcatalog) {
     _catalog = newcatalog;
   }
 

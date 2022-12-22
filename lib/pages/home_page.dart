@@ -23,13 +23,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
     loadData();
+    super.initState();
   }
 
   loadData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     final catalogJson = await rootBundle
         .loadString("assets/files/catalog.json"); //loaded json string
     final decodedData = jsonDecode(
@@ -51,7 +50,7 @@ class _HomePageState extends State<HomePage> {
             Navigator.pushNamed(context, MyRoutes.cartRoute);
           },
           backgroundColor: context.theme.buttonColor,
-          child: Icon(
+          child: const Icon(
             CupertinoIcons.cart,
             color: Colors.white,
           ),
@@ -63,13 +62,13 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CatalogHeader(),
-                  if (CatalogModel.items != null &&
-                      CatalogModel.items.isNotEmpty)
-                    CatalogList().py16().expand()
+                  const CatalogHeader(),
+                  if (CatalogModel.items.isNotEmpty)
+                    const CatalogList().py16().expand()
                   else
                     Center(
-                      child: CircularProgressIndicator().centered().expand(),
+                      child:
+                          const CircularProgressIndicator().centered().expand(),
                     )
                 ],
               )),

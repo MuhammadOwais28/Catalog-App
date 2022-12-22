@@ -30,8 +30,7 @@ class CatalogList extends StatelessWidget {
 
 class CatalogItem extends StatelessWidget {
   final Item catalog;
-  const CatalogItem({super.key, required this.catalog})
-      : assert(catalog != null);
+  const CatalogItem({super.key, required this.catalog});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +52,7 @@ class CatalogItem extends StatelessWidget {
               alignment: MainAxisAlignment.spaceBetween,
               children: [
                 "\$${catalog.price}".text.bold.xl.make(),
-                _AddToCart(catalog:catalog)
+                _AddToCart(catalog: catalog)
               ],
             ).pOnly(right: 8.0)
           ],
@@ -79,16 +78,16 @@ class _AddToCartState extends State<_AddToCart> {
     return ElevatedButton(
         onPressed: () {
           isAdded = isAdded.toggle();
-          final _catalog = CatalogModel();
-          final _cart = CartModel();
-          _cart.catalog = _catalog;
-          _cart.add(widget.catalog);
+          final catalog = CatalogModel();
+          final cart = CartModel();
+          cart.catalog = catalog;
+          cart.add(widget.catalog);
           setState(() {});
         },
         style: ButtonStyle(
             backgroundColor:
                 MaterialStateProperty.all(context.theme.buttonColor),
-            shape: MaterialStateProperty.all(StadiumBorder())),
-        child: isAdded ? Icon(Icons.done) : "Add to Cart".text.make());
+            shape: MaterialStateProperty.all(const StadiumBorder())),
+        child: isAdded ? const Icon(Icons.done) : "Add to Cart".text.make());
   }
 }

@@ -15,7 +15,11 @@ class CartPage extends StatelessWidget {
         title: "Cart".text.color(context.accentColor).make(),
       ),
       body: Column(
-        children: [_CartList().p32().expand(), Divider(), _CartTotal()],
+        children: [
+          const _CartList().p32().expand(),
+          const Divider(),
+          const _CartTotal()
+        ],
       ),
     );
   }
@@ -70,9 +74,10 @@ class _CartListState extends State<_CartList> {
         itemCount: _cart.items.length,
         itemBuilder: (context, index) {
           return ListTile(
-            leading: Icon(Icons.done),
+            leading: const Icon(Icons.done),
             trailing: IconButton(
-                onPressed: (() {}), icon: Icon(Icons.remove_circle_outline)),
+                onPressed: (() {}),
+                icon: const Icon(Icons.remove_circle_outline)),
             title: _cart.items[index].name.text.make(),
           );
         });

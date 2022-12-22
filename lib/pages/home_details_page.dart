@@ -6,8 +6,7 @@ import '../models/catalog.dart';
 
 class HomeDetailPage extends StatelessWidget {
   final Item catalog;
-  const HomeDetailPage({required this.catalog, super.key})
-      : assert(catalog != null);
+  const HomeDetailPage({required this.catalog, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class HomeDetailPage extends StatelessWidget {
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                             context.theme.buttonColor),
-                        shape: MaterialStateProperty.all(StadiumBorder())),
+                        shape: MaterialStateProperty.all(const StadiumBorder())),
                     child: "Add to Cart".text.make())
                 .wh(115, 50)
           ],
