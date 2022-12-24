@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+
 
 class CatalogModel {
   static final catalogModel = CatalogModel._internal();
