@@ -76,10 +76,13 @@ class _CartListState extends State<_CartList> {
           return ListTile(
             leading: const Icon(Icons.done),
             trailing: IconButton(
-                onPressed: (() {}),
-                icon: const Icon(Icons.remove_circle_outline)),
-            title: _cart.items[index].name.text.make(),
+              onPressed: (() {}),
+              icon: const Icon(Icons.remove_circle_outline),
+            ),
+            title: Text(_cart.items[index].name),
           );
         });
   }
 }
+
+//  Text(_cart.items[index].name),
