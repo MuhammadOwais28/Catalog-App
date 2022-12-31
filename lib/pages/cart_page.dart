@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/cart.dart';
-import 'package:flutter_catalog/widgets/themes.dart';
+
 import 'package:velocity_x/velocity_x.dart';
+
+import '../core/store.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -16,7 +18,7 @@ class CartPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const _CartList().p32().expand(),
+          CartList().p32().expand(),
           const Divider(),
           const _CartTotal()
         ],
@@ -26,22 +28,26 @@ class CartPage extends StatelessWidget {
 }
 
 class _CartTotal extends StatelessWidget {
-  const _CartTotal({super.key});
+  const _CartTotal();
 
   @override
   Widget build(BuildContext context) {
-    final _cart = CartModel();
+    final CartModel cart = (VxState.store as MyStore).cart;
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$${_cart.totalPrice}"
-              .text
-              .bold
-              .xl4
-              .color(context.accentColor)
-              .make(),
+          VxConsumer(
+              mutations: const {RemoveMutation},
+              builder: (context, _,__) {
+                return "\$${cart.totalPrice}"
+                    .text
+                    .xl4
+                    .color(context.theme.accentColor)
+                    .bold
+                    .make();
+              }),
           30.widthBox,
           ElevatedButton(
                   onPressed: () {
@@ -59,17 +65,13 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartList extends StatefulWidget {
-  const _CartList();
+class CartList extends StatelessWidget {
+  const CartList({super.key});
 
-  @override
-  State<_CartList> createState() => _CartListState();
-}
-
-class _CartListState extends State<_CartList> {
-  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [RemoveMutation]);
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return _cart.items.isEmpty
         ? "Seems like cart is empty. :')"
             .text
@@ -83,8 +85,8 @@ class _CartListState extends State<_CartList> {
                 leading: const Icon(Icons.done),
                 trailing: IconButton(
                     onPressed: (() {
-                      _cart.remove(_cart.items[index]);
-                      setState(() {});
+                      RemoveMutation(_cart.items[index]);
+                      // setState(() {});
                     }),
                     icon: const Icon(Icons.remove_circle_outline)),
                 title: Text(_cart.items[index].name),
@@ -92,3 +94,5 @@ class _CartListState extends State<_CartList> {
             });
   }
 }
+
+//  Text(_cart.items[index].name),

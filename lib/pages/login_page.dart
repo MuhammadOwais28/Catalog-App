@@ -102,22 +102,21 @@ class _LoginPageState extends State<LoginPage> {
                         child: AnimatedContainer(
                           height: 40,
                           width: changebutton ? 50 : 100,
-                          // ignore: prefer_const_constructors
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           alignment: Alignment.center,
 
-                          // ignore: prefer_const_constructors
+                      
                           child: changebutton
-                              // ignore: prefer_const_constructors
-                              ? Icon(
+                       
+                              ? const Icon(
                                   Icons.done,
                                   color: Colors.white,
                                 )
-                              // ignore: prefer_const_constructors
-                              : Text(
+                              
+                              : const Text(
                                   "Login",
 
-                                  // ignore: prefer_const_constructors
+                                  
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 15,

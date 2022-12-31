@@ -2,16 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_catalog/models/catalog.dart';
-import 'package:flutter_catalog/pages/cart_page.dart';
+
 import 'package:flutter_catalog/utils/routes.dart';
-import 'package:flutter_catalog/widgets/drawer.dart';
-import 'package:flutter_catalog/widgets/themes.dart';
+
 import 'dart:convert';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../widgets/home_widgets/catalog_header.dart';
 import '../widgets/home_widgets/catalog_list.dart';
-import '../widgets/item_widget.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
